@@ -1,18 +1,13 @@
 import Container from "@/components/Container";
+import About from "@/components/sections/About";
 import Accessibility from "@/components/sections/Accessibility";
 import Consulting from "@/components/sections/Consulting";
 import Hero from "@/components/sections/Hero";
 import InHouse from "@/components/sections/InHouse";
+import Portfolio from "@/components/sections/Portfolio";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 
-/* Section shells still to be ported. Backgrounds follow the design export: navy for the dark band. */
-const SHELLS = [
-  { id: "portfolio", title: "ผลงาน", bg: "bg-cloud-base" },
-  { id: "platforms", title: "แพลตฟอร์ม", bg: "bg-deep-navy", dark: true },
-  { id: "about", title: "เกี่ยวกับเรา", bg: "bg-white" },
-  { id: "contact", title: "ติดต่อเรา", bg: "bg-cloud-base" },
-];
-
+/* Placeholder for a section still to be ported. */
 function SectionShell({ id, title, bg, dark }) {
   return (
     <section id={id} aria-labelledby={`${id}-heading`} className={`${bg} ${dark ? "text-white" : ""}`}>
@@ -36,9 +31,10 @@ export default function Home() {
       <InHouse />
       <Consulting />
       <Accessibility />
-      {SHELLS.map((s) => (
-        <SectionShell key={s.id} {...s} />
-      ))}
+      <Portfolio />
+      <SectionShell id="platforms" title="แพลตฟอร์ม" bg="bg-deep-navy" dark />
+      <About />
+      <SectionShell id="contact" title="ติดต่อเรา" bg="bg-cloud-base" />
     </>
   );
 }
