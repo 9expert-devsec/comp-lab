@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
+import LogoTile from "@/components/LogoTile";
+import { getLogos } from "@/lib/logos";
 
 const ITEMS = [
   { t: "ตรวจสอบตาม WCAG 2.2", d: "ด้วยเครื่องมือ ผู้เชี่ยวชาญ และผู้ใช้งานจริง รวมถึงผู้สูงอายุและคนพิการ" },
@@ -9,6 +11,7 @@ const ITEMS = [
 ];
 
 export default function Accessibility() {
+  const govLogos = getLogos("government");
   return (
     <section id="accessibility" aria-labelledby="accessibility-heading" className="bg-white">
       <Container className="py-16 lg:py-24">
@@ -48,16 +51,18 @@ export default function Accessibility() {
           <h3 className="mb-4 text-[0.8125rem] font-medium tracking-wide text-deep-navy/60 uppercase">
             หน่วยงานภาครัฐที่ให้ความไว้วางใจ
           </h3>
-          {/* Placeholder tiles until the real government logos arrive. */}
+          {/* Logos from public/logos/government; placeholder tiles while that folder is empty. */}
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {Array.from({ length: 6 }, (_, i) => (
-              <li
-                key={i}
-                className="flex min-h-14 items-center justify-center rounded-lg border border-deep-navy/10 bg-white px-4 py-2 text-center text-sm font-semibold text-deep-navy/60 hc-border"
-              >
-                [โลโก้หน่วยงานรัฐ]
-              </li>
-            ))}
+            {govLogos.length > 0
+              ? govLogos.map((logo) => <LogoTile key={logo.src} {...logo} />)
+              : Array.from({ length: 6 }, (_, i) => (
+                  <li
+                    key={i}
+                    className="flex min-h-14 items-center justify-center rounded-lg border border-deep-navy/10 bg-white px-4 py-2 text-center text-sm font-semibold text-deep-navy/60 hc-border"
+                  >
+                    [โลโก้หน่วยงานรัฐ]
+                  </li>
+                ))}
           </ul>
         </div>
       </Container>

@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import ClientSlider from "@/components/ClientSlider";
 import Container from "@/components/Container";
 import Eyebrow from "@/components/Eyebrow";
+import { getLogos } from "@/lib/logos";
 
 export default function Hero() {
   return (
@@ -58,7 +59,7 @@ export default function Hero() {
       </Container>
 
       <Container className="pb-14">
-        <ClientSlider />
+        <ClientSlider logos={getLogos("clients")} />
       </Container>
     </section>
   );

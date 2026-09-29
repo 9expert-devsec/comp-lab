@@ -1,24 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import LogoTile from "@/components/LogoTile";
 
-const CLIENT_LOGOS = [
-  { name: "Ajinomoto (Thailand)", src: "/logos/clients/01-ajinomoto.png", width: 190, height: 138 },
-  { name: "Bank of Thailand", src: "/logos/clients/02-bot.png", width: 486, height: 114 },
-  { name: "Cargill Meats (Thailand)", src: "/logos/clients/03-cargill.png", width: 304, height: 136 },
-  { name: "Praram 9 Hospital", src: "/logos/clients/04-praram9-hospital.png", width: 466, height: 204 },
-  { name: "Sony Technology (Thailand)", src: "/logos/clients/05-sony.png", width: 466, height: 82 },
-  { name: "Ngern Tid Lor", src: "/logos/clients/06-ngerntidlor.png", width: 468, height: 96 },
-];
-
-const rotate = (n) => [...CLIENT_LOGOS.slice(n), ...CLIENT_LOGOS.slice(0, n)];
-const SETS = [rotate(0), rotate(2), rotate(4)];
+const PER_SET = 6;
 const INTERVAL_MS = 3800;
 
-/* Hero client logo slider: 6 logos per set. Auto-advances with a visible pause/play control,
-   pauses on hover and keyboard focus, and stays still under prefers-reduced-motion (WCAG 2.2.2). */
-export default function ClientSlider() {
+/* Hero client logo slider: the logos (read from public/logos/clients at build time) in sets of 6.
+   Auto-advances with a visible pause/play control, pauses on hover and keyboard focus, and stays
+   still under prefers-reduced-motion (WCAG 2.2.2). */
+export default function ClientSlider({ logos }) {
+  const sets = [];
+  for (let i = 0; i < logos.length; i += PER_SET) sets.push(logos.slice(i, i + PER_SET));
+  const setCount = sets.length;
   const [index, setIndex] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [userPlaying, setUserPlaying] = useState(null);
@@ -38,14 +32,16 @@ export default function ClientSlider() {
   const running = playing && !hovered && !focused;
 
   useEffect(() => {
-    if (!running) return;
-    const id = setInterval(() => setIndex((v) => (v + 1) % SETS.length), INTERVAL_MS);
+    if (!running || setCount < 2) return;
+    const id = setInterval(() => setIndex((v) => (v + 1) % setCount), INTERVAL_MS);
     return () => clearInterval(id);
-  }, [running]);
+  }, [running, setCount]);
 
   const onBlur = (e) => {
     if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);
   };
+
+  if (setCount === 0) return null;
 
   return (
     <div
@@ -83,27 +79,15 @@ export default function ClientSlider() {
       <ul
         className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
         aria-live={running ? "off" : "polite"}
-        aria-label={`ชุดโลโก้ที่ ${index + 1} จาก ${SETS.length}`}
+        aria-label={`ชุดโลโก้ที่ ${index + 1} จาก ${sets.length}`}
       >
-        {SETS[index].map((c) => (
-          <li
-            key={c.name}
-            className="flex h-16 items-center justify-center rounded-lg border border-deep-navy/10 bg-white px-5 hc-border"
-          >
-            <Image
-              src={c.src}
-              alt={c.name}
-              width={c.width}
-              height={c.height}
-              sizes="160px"
-              className="max-h-9 w-auto max-w-full object-contain"
-            />
-          </li>
+        {sets[index].map((logo) => (
+          <LogoTile key={logo.src} {...logo} />
         ))}
       </ul>
 
       <div className="mt-2 flex gap-1">
-        {SETS.map((_, i) => (
+        {sets.map((_, i) => (
           <button
             key={i}
             type="button"
