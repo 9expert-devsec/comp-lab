@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const BASE =
-  "inline-flex max-w-full items-center justify-center gap-2 min-h-[44px] px-6 py-2 rounded-lg text-center font-semibold " +
+  "hc-btn inline-flex max-w-full items-center justify-center gap-2 min-h-[44px] px-6 py-2 rounded-lg text-center font-semibold " +
   "transition-[transform,background-color,color,border-color] duration-200 ease-out " +
   "motion-safe:hover:-translate-y-0.5 active:translate-y-0 text-[0.9375rem] leading-tight";
 

@@ -15,7 +15,7 @@ function TimelineItem({ year, title, desc, tags, logo }) {
       <div className="min-w-0 md:relative md:border-l-2 md:border-deep-navy/15 md:pb-10 md:pl-8 md:group-last:pb-0 hc-border">
         <span
           aria-hidden="true"
-          className="absolute top-1.5 -left-[7px] h-3 w-3 rounded-full bg-action-blue ring-4 ring-cloud-base"
+          className="hc-dot-on absolute top-1.5 -left-[7px] h-3 w-3 rounded-full bg-action-blue ring-4 ring-cloud-base"
         />
         {logo && (
           <Image

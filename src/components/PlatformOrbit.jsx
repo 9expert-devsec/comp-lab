@@ -60,7 +60,7 @@ function PlatformCta({ platform }) {
       href={platform.url}
       target="_blank"
       rel="noopener"
-      className="focus-lime inline-flex min-h-[44px] items-center justify-center rounded-full bg-signal-lime px-6 text-[0.9375rem] font-bold text-deep-navy transition-colors hover:bg-[#c7ee2c]"
+      className="hc-btn focus-lime inline-flex min-h-[44px] items-center justify-center rounded-full bg-signal-lime px-6 text-[0.9375rem] font-bold text-deep-navy transition-colors hover:bg-[#c7ee2c]"
     >
       เข้าสู่เว็บไซต์
       <span className="sr-only"> {platform.name} (เปิดในแท็บใหม่)</span>
@@ -270,7 +270,7 @@ export default function PlatformOrbit({ platforms, logos }) {
             this layer only). Hidden in forced-colors mode, where it would render as a hard line. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 forced-colors:hidden"
+          className="hc-hide pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 forced-colors:hidden"
           style={{ maskImage: ORBIT_MASK, WebkitMaskImage: ORBIT_MASK }}
         >
           <svg
@@ -316,7 +316,7 @@ export default function PlatformOrbit({ platforms, logos }) {
               }}
             >
               {isCenter && (
-                <span aria-hidden="true" className="absolute -inset-3 rounded-full border-2 border-signal-lime" />
+                <span aria-hidden="true" className="hc-ring-active absolute -inset-3 rounded-full border-2 border-signal-lime" />
               )}
               <button
                 ref={(el) => (planetRefs.current[i] = el)}
@@ -391,23 +391,23 @@ export default function PlatformOrbit({ platforms, logos }) {
               tabIndex={-1}
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => userSelect(i)}
-              className="grid h-6 min-w-6 place-items-center"
+              className="hc-dot-btn grid h-6 min-w-6 place-items-center"
             >
               {i === active ? (
-                <span className="relative block h-2.5 w-10 overflow-hidden rounded-full bg-white/20">
+                <span className="hc-dot relative block h-2.5 w-10 overflow-hidden rounded-full bg-white/20">
                   {autoOn ? (
                     <span
                       key={active}
-                      className="platform-progress absolute inset-0 rounded-full bg-signal-lime"
+                      className="hc-dot-on platform-progress absolute inset-0 rounded-full bg-signal-lime"
                       style={{ animationPlayState: running ? "running" : "paused" }}
                       onAnimationEnd={() => moveTo(active + 1)}
                     />
                   ) : (
-                    <span className="absolute inset-0 rounded-full bg-signal-lime" />
+                    <span className="hc-dot-on absolute inset-0 rounded-full bg-signal-lime" />
                   )}
                 </span>
               ) : (
-                <span className="block h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-white/70" />
+                <span className="hc-dot block h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-white/70" />
               )}
             </button>
           ))}

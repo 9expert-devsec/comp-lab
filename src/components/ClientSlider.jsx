@@ -94,12 +94,14 @@ export default function ClientSlider({ logos }) {
             onClick={() => setIndex(i)}
             aria-label={`ชุดโลโก้ที่ ${i + 1}`}
             aria-current={index === i ? "true" : undefined}
-            className="group grid h-6 min-w-6 place-items-center rounded-full"
+            className="hc-dot-btn group grid h-6 min-w-6 place-items-center rounded-full"
           >
             <span
               aria-hidden="true"
               className={`block h-2.5 rounded-full transition-all duration-200 ${
-                index === i ? "w-7 bg-action-blue" : "w-2.5 bg-deep-navy/25 group-hover:bg-deep-navy/45"
+                index === i
+                  ? "hc-dot-on w-7 bg-action-blue"
+                  : "hc-dot w-2.5 bg-deep-navy/25 group-hover:bg-deep-navy/45"
               }`}
             />
           </button>

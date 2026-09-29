@@ -19,7 +19,7 @@ export default function About() {
         </div>
 
         <dl className="mt-10 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-          <div className="flex flex-col justify-center rounded-2xl bg-deep-navy p-6 text-white sm:p-8 lg:p-10">
+          <div className="flex flex-col justify-center hc-border rounded-2xl bg-deep-navy p-6 text-white sm:p-8 lg:p-10">
             <dt className="order-2 mt-2 text-lg text-white/85">{PRIMARY_METRIC.label}</dt>
             <dd className="order-1 text-[3.25rem] leading-none font-bold text-air-blue lg:text-[4.25rem]">
               {PRIMARY_METRIC.value}

@@ -51,7 +51,7 @@ export default function Hero() {
               className="object-cover"
             />
           </div>
-          <div className="absolute -bottom-4 -left-3 rounded-xl bg-deep-navy px-5 py-4 text-white shadow-lg lg:-left-5">
+          <div className="hc-border absolute -bottom-4 -left-3 rounded-xl bg-deep-navy px-5 py-4 text-white shadow-lg lg:-left-5">
             <div className="text-[1.625rem] font-bold text-air-blue">5,000+</div>
             <div className="text-xs text-white/75">องค์กรที่ไว้วางใจ</div>
           </div>

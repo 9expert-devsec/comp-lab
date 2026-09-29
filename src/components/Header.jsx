@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Container from "@/components/Container";
+import { CONTRAST_KEY, savePref } from "@/lib/display-prefs";
 
 export const NAV = [
   { id: "top", label: "หน้าแรก" },
@@ -15,6 +16,20 @@ export const NAV = [
 
 const TEXT_SIZE_LABEL = { base: "ปกติ", lg: "ใหญ่", xl: "ใหญ่พิเศษ" };
 
+/* Reads an <html> attribute and re-renders when it changes (the attribute is the source of truth). */
+function htmlAttrStore(attr) {
+  return {
+    subscribe(cb) {
+      const mo = new MutationObserver(cb);
+      mo.observe(document.documentElement, { attributes: true, attributeFilter: [attr] });
+      return () => mo.disconnect();
+    },
+    get: () => document.documentElement.getAttribute(attr),
+    getServer: () => null,
+  };
+}
+const contrastStore = htmlAttrStore("data-contrast");
+
 const toolBtn =
   "min-h-[44px] min-w-[44px] px-3 rounded-md border font-semibold transition-colors hc-border";
 const toolIdle =
@@ -22,7 +37,7 @@ const toolIdle =
 
 export default function Header() {
   const [textSize, setTextSize] = useState("base");
-  const [highContrast, setHighContrast] = useState(false);
+  const highContrast = useSyncExternalStore(contrastStore.subscribe, contrastStore.get, contrastStore.getServer) === "high";
   const [open, setOpen] = useState(false);
   const menuBtnRef = useRef(null);
 
@@ -31,12 +46,6 @@ export default function Header() {
     if (textSize === "base") el.removeAttribute("data-textsize");
     else el.setAttribute("data-textsize", textSize);
   }, [textSize]);
-
-  useEffect(() => {
-    const el = document.documentElement;
-    if (highContrast) el.setAttribute("data-contrast", "high");
-    else el.removeAttribute("data-contrast");
-  }, [highContrast]);
 
   useEffect(() => {
     if (!open) return;
@@ -98,13 +107,15 @@ export default function Header() {
           </button>
           <button
             type="button"
-            onClick={() => setHighContrast((v) => !v)}
+            onClick={() =>
+              savePref(CONTRAST_KEY, "data-contrast", highContrast ? null : "high", highContrast ? "normal" : "high")
+            }
             aria-pressed={highContrast}
             className={`${toolBtn} ${
               highContrast ? "border-deep-navy bg-deep-navy text-white" : toolIdle
             }`}
-            aria-label="สลับโหมดคอนทราสต์สูง"
-            title="คอนทราสต์สูง"
+            aria-label="โหมดสีตัดกันสูง"
+            title="โหมดสีตัดกันสูง"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="2" />

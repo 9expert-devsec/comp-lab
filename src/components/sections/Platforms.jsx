@@ -58,7 +58,7 @@ export default function Platforms() {
       aria-label="แพลตฟอร์มการเรียนรู้ในเครือ 9Expert"
       className="relative overflow-x-clip bg-deep-navy text-white"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <div aria-hidden="true" className="hc-hide pointer-events-none absolute inset-0">
         {STARS.map((s, i) => (
           <span
             key={i}

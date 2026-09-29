@@ -65,24 +65,11 @@ html[data-textsize="xl"] {
   --base-size: 125%;
 }
 
-/* High-contrast mode: strengthen borders + text weight against light/dark grounds */
-html[data-contrast="high"] {
-  --nine-blue: #0a5fd0;
-  --action-blue: #0043c2;
-  --air-blue: #6ec2ff;
-}
-html[data-contrast="high"] .hc-border {
-  border-color: currentColor !important;
-}
-
 /* Visible, consistent focus states (WCAG 2.2) */
 *:focus-visible {
   outline: 3px solid var(--action-blue);
   outline-offset: 2px;
   border-radius: 4px;
-}
-html[data-contrast="high"] *:focus-visible {
-  outline-color: var(--signal-lime);
 }
 
 /* Lime ring for round controls on the dark platforms carousel. Unlayered on purpose: it must beat
@@ -110,4 +97,118 @@ html[data-contrast="high"] *:focus-visible {
 ::selection {
   background: var(--signal-lime);
   color: var(--deep-navy);
+}
+
+/* =====================================================================================
+   High-contrast theme — html[data-contrast="high"], set by the header toggle (and before
+   first paint by the inline script in layout.jsx). Palette: #000 ground, #FFF text and
+   borders, #FF0 for links, focus and active states. No greys, shadows, gradients or tints.
+
+   The brand tokens are remapped first (they drive SVG fills, focus rings and form accents).
+   Components reuse the same token for text and background, so the override block below
+   then forces the ground/text/border colours in one place instead of per component.
+   Photos, logos, SVG artwork and the map iframe keep their own colours.
+   `forced-colors: active` still wins: the OS palette replaces all of these colours.
+   ===================================================================================== */
+html[data-contrast="high"] {
+  --nine-blue: #ffffff;
+  --action-blue: #ffff00;
+  --air-blue: #ffff00;
+  --deep-navy: #000000;
+  --cloud-base: #000000;
+  --signal-lime: #ffff00;
+  color-scheme: dark;
+  accent-color: #ffff00;
+}
+
+html[data-contrast="high"] body,
+html[data-contrast="high"] body *:not(img, svg, svg *, iframe, video, picture) {
+  background-color: #000 !important;
+  background-image: none !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Links: yellow and always underlined. (`body a:not(…)` outranks the catch-all rule above.) */
+html[data-contrast="high"] body a:not(.hc-btn) {
+  color: #ff0 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 0.2em;
+}
+/* Text wrapped in spans inside links and state-carrying buttons takes the parent's colour. */
+html[data-contrast="high"] body a *:not(svg, svg *, img),
+html[data-contrast="high"] body .hc-btn *:not(svg, svg *, img),
+html[data-contrast="high"] body [aria-pressed="true"] *:not(svg, svg *, img),
+html[data-contrast="high"] body [aria-selected="true"] *:not(svg, svg *, img) {
+  color: inherit !important;
+}
+
+/* Every control and card gets a visible 2px white border. */
+html[data-contrast="high"] button,
+html[data-contrast="high"] input,
+html[data-contrast="high"] select,
+html[data-contrast="high"] textarea,
+html[data-contrast="high"] .hc-border {
+  border: 2px solid #fff !important;
+}
+html[data-contrast="high"] ::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+/* Button-shaped links and buttons (lime and blue alike): black, yellow border, yellow text. */
+html[data-contrast="high"] .hc-btn {
+  border: 2px solid #ff0 !important;
+  color: #ff0 !important;
+  text-decoration: none !important;
+}
+
+/* Active / pressed / selected states in yellow. */
+html[data-contrast="high"] [aria-pressed="true"],
+html[data-contrast="high"] [aria-selected="true"],
+html[data-contrast="high"] [aria-current="true"] {
+  border-color: #ff0 !important;
+  color: #ff0 !important;
+}
+
+/* Slider / carousel dots: the dot buttons themselves stay borderless; the marks inside show state. */
+html[data-contrast="high"] .hc-dot-btn {
+  border: 0 !important;
+}
+html[data-contrast="high"] .hc-dot {
+  border: 2px solid #fff !important;
+}
+html[data-contrast="high"] .hc-dot-on {
+  background-color: #ff0 !important;
+}
+
+/* Logo tiles stay white (most logos are dark ink) with a black 2px border. */
+html[data-contrast="high"] .hc-logo-tile,
+html[data-contrast="high"] .hc-logo-tile * {
+  background-color: #fff !important;
+}
+html[data-contrast="high"] .hc-logo-tile {
+  border: 2px solid #000 !important;
+  outline: 2px solid #fff;
+}
+
+/* Purely decorative layers (stars, orbit line) disappear. */
+html[data-contrast="high"] .hc-hide {
+  display: none !important;
+}
+
+/* Ecosystem: the centre planet's ring in yellow. */
+html[data-contrast="high"] .hc-ring-active {
+  border-color: #ff0 !important;
+}
+
+html[data-contrast="high"] *:focus-visible,
+html[data-contrast="high"] .focus-lime:focus-visible {
+  outline: 3px solid #ff0 !important;
+}
+html[data-contrast="high"] ::selection {
+  background: #ff0;
+  color: #000;
 }

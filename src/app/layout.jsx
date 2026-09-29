@@ -1,6 +1,7 @@
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { PREFS_SCRIPT } from "@/lib/display-prefs";
 import "./globals.css";
 
 const ibmPlexSansThai = IBM_Plex_Sans_Thai({
@@ -18,7 +19,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="th" className={ibmPlexSansThai.variable}>
+    // The head script sets display-preference attributes on <html> before hydration, so React must
+    // not treat those attributes as a mismatch.
+    <html lang="th" className={ibmPlexSansThai.variable} suppressHydrationWarning>
+      <head>
+        {/* Applies stored display preferences before first paint (no flash of the normal theme). */}
+        <script dangerouslySetInnerHTML={{ __html: PREFS_SCRIPT }} />
+      </head>
       <body className="min-h-screen bg-cloud-base">
         <a
           href="#main-content"

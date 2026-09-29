@@ -16,7 +16,7 @@ export default function Accessibility() {
     <section id="accessibility" aria-labelledby="accessibility-heading" className="bg-white">
       <Container className="py-16 lg:py-24">
         <div className="max-w-[45rem]">
-          <span className="inline-block rounded-full bg-signal-lime px-3 py-1.5 text-[0.8125rem] font-bold text-deep-navy">
+          <span className="hc-border inline-block rounded-full bg-signal-lime px-3 py-1.5 text-[0.8125rem] font-bold text-deep-navy">
             Thai Web Accessibility by 9Expert
           </span>
           <h2
