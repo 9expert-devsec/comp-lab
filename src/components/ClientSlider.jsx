@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const CLIENT_LOGOS = [
-  { name: "Ajinomoto (Thailand)", src: "/images/clients/ajinomoto-thailand.png", width: 190, height: 138 },
-  { name: "Bank of Thailand", src: "/images/clients/bank-of-thailand.png", width: 400, height: 94 },
-  { name: "Cargill Meats (Thailand)", src: "/images/clients/cargill-meats-thailand.png", width: 304, height: 136 },
-  { name: "Praram 9 Hospital", src: "/images/clients/praram-9-hospital.png", width: 400, height: 175 },
-  { name: "Sony Technology (Thailand)", src: "/images/clients/sony-technology-thailand.png", width: 400, height: 70 },
-  { name: "Ngern Tid Lor", src: "/images/clients/ngern-tid-lor.png", width: 400, height: 82 },
+  { name: "Ajinomoto (Thailand)", src: "/logos/clients/01-ajinomoto.png", width: 190, height: 138 },
+  { name: "Bank of Thailand", src: "/logos/clients/02-bot.png", width: 486, height: 114 },
+  { name: "Cargill Meats (Thailand)", src: "/logos/clients/03-cargill.png", width: 304, height: 136 },
+  { name: "Praram 9 Hospital", src: "/logos/clients/04-praram9-hospital.png", width: 466, height: 204 },
+  { name: "Sony Technology (Thailand)", src: "/logos/clients/05-sony.png", width: 466, height: 82 },
+  { name: "Ngern Tid Lor", src: "/logos/clients/06-ngerntidlor.png", width: 468, height: 96 },
 ];
 
 const rotate = (n) => [...CLIENT_LOGOS.slice(n), ...CLIENT_LOGOS.slice(0, n)];
