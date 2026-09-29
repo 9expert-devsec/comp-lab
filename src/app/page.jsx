@@ -21,7 +21,7 @@ export default function Home() {
         <Container className="py-16 lg:py-24">
           <Heading
             id={`${id}-heading`}
-            className={`text-[28px] leading-tight font-bold lg:text-[40px] ${dark ? "text-white" : "text-nine-blue"}`}
+            className={`text-[1.75rem] leading-tight font-bold lg:text-[2.5rem] ${dark ? "text-white" : "text-nine-blue"}`}
           >
             {title}
           </Heading>

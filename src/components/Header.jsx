@@ -60,12 +60,12 @@ export default function Header() {
           <Image
             src="/images/9expert-signature-logo.png"
             alt="9Expert"
-            width={900}
-            height={295}
+            width={800}
+            height={262}
             loading="eager"
             className="h-8 w-auto"
           />
-          <span className="hidden border-l border-deep-navy/15 pl-3 text-[11px] leading-tight font-medium text-deep-navy/55 sm:block">
+          <span className="hidden border-l border-deep-navy/15 pl-3 text-[0.6875rem] leading-tight font-medium text-deep-navy/55 sm:block">
             Knowledge
             <br />
             Provider
@@ -77,7 +77,7 @@ export default function Header() {
             <a
               key={n.id}
               href={`#${n.id}`}
-              className="rounded-md px-3 py-2 text-[15px] font-medium text-deep-navy/75 transition-colors hover:bg-action-blue/[0.06] hover:text-action-blue"
+              className="rounded-md px-3 py-2 text-[0.9375rem] font-medium text-deep-navy/75 transition-colors hover:bg-action-blue/[0.06] hover:text-action-blue"
             >
               {n.label}
             </a>
@@ -92,8 +92,8 @@ export default function Header() {
             aria-label={`ปรับขนาดตัวอักษร (ปัจจุบัน: ${TEXT_SIZE_LABEL[textSize]})`}
             title="ปรับขนาดตัวอักษร"
           >
-            <span className="text-[13px]" aria-hidden="true">ก</span>
-            <span className="ml-0.5 align-middle text-[17px]" aria-hidden="true">ก</span>
+            <span className="text-[0.8125rem]" aria-hidden="true">ก</span>
+            <span className="ml-0.5 align-middle text-[1.0625rem]" aria-hidden="true">ก</span>
           </button>
           <button
             type="button"
@@ -138,7 +138,7 @@ export default function Header() {
                 key={n.id}
                 href={`#${n.id}`}
                 onClick={() => setOpen(false)}
-                className="block min-h-[44px] border-b border-deep-navy/5 py-3 text-[15px] font-medium text-deep-navy/80 last:border-0"
+                className="block min-h-[44px] border-b border-deep-navy/5 py-3 text-[0.9375rem] font-medium text-deep-navy/80 last:border-0"
               >
                 {n.label}
               </a>
