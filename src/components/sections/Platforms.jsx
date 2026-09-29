@@ -4,17 +4,31 @@ import Container from "@/components/Container";
 import PlatformOrbit from "@/components/PlatformOrbit";
 import { PLATFORMS } from "@/data/platforms";
 
-const publicFile = (p) => fs.existsSync(path.join(process.cwd(), "public", p));
+/* True if the PNG has an alpha channel (colour type 4/6, or a tRNS chunk) — read from its header. */
+function pngHasAlpha(buf) {
+  const colourType = buf[25];
+  return colourType === 4 || colourType === 6 || buf.includes(Buffer.from("tRNS"));
+}
 
-/* Resolved at build time: a logo is used only if its file has been dropped into public/logos/. */
+/*
+ * Resolved at build time: a logo is used only if its file exists in public/logos/ AND is transparent.
+ * An opaque file would sit on the planet as a white square, so it is skipped (with a warning) and the
+ * planet falls back to text.
+ */
+function usableLogo(file) {
+  const abs = path.join(process.cwd(), "public", file);
+  if (!fs.existsSync(abs)) return null;
+  if (!pngHasAlpha(fs.readFileSync(abs))) {
+    console.warn(`[logos] public/${file} has no transparent background — not used on the planets.`);
+    return null;
+  }
+  return `/${file}`;
+}
+
 function resolveLogos() {
   const white = {};
-  for (const p of PLATFORMS) {
-    const file = `logos/platforms/${p.slug}-white.png`;
-    white[p.slug] = publicFile(file) ? `/${file}` : null;
-  }
-  const markFile = "logos/brand/9expert-mark-white.png";
-  return { white, mark: publicFile(markFile) ? `/${markFile}` : null };
+  for (const p of PLATFORMS) white[p.slug] = usableLogo(`logos/platforms/${p.slug}-white.png`);
+  return { white, mark: usableLogo("logos/brand/9expert-mark-white.png") };
 }
 
 /* Deterministic star field (fixed-seed PRNG), so every build renders the same decoration. */

@@ -11,6 +11,9 @@ const LAYOUTS = {
 };
 const EASE = "650ms cubic-bezier(0.22, 0.61, 0.36, 1)";
 const SWIPE_PX = 40;
+/* Half-width (px) of the orbit-line drawing; wide enough to reach the edges of a 2560 screen. */
+const ARC_SPAN = 1500;
+const ORBIT_MASK = "linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%)";
 
 const noopSubscribe = () => () => {};
 
@@ -226,7 +229,7 @@ export default function PlatformOrbit({ platforms, logos }) {
   const k = layout.frame && stageWidth ? Math.min(1, stageWidth / layout.frame) : 1;
   const current = platforms[active];
   const arcR = R * k;
-  const arcHalf = Math.min(1200, arcR * 0.999);
+  const arcHalf = Math.min(ARC_SPAN, arcR * 0.999);
   const arcY = layout.cy + arcR - Math.sqrt(arcR * arcR - arcHalf * arcHalf);
 
   return (
@@ -263,21 +266,28 @@ export default function PlatformOrbit({ platforms, logos }) {
         className="relative touch-pan-y select-none"
         style={{ height: layout.height }}
       >
-        <svg
+        {/* Orbit line layer: spans the full viewport width and fades out toward both edges (mask on
+            this layer only). Hidden in forced-colors mode, where it would render as a hard line. */}
+        <div
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2"
-          width="2400"
-          height={layout.height}
-          viewBox={`-1200 0 2400 ${layout.height}`}
+          className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2 forced-colors:hidden"
+          style={{ maskImage: ORBIT_MASK, WebkitMaskImage: ORBIT_MASK }}
         >
-          <path
-            d={`M ${-arcHalf} ${arcY} A ${arcR} ${arcR} 0 0 1 ${arcHalf} ${arcY}`}
-            fill="none"
-            className="stroke-air-blue"
-            strokeOpacity="0.35"
-            strokeWidth="1"
-          />
-        </svg>
+          <svg
+            className="absolute top-0 left-1/2 -translate-x-1/2"
+            width={ARC_SPAN * 2}
+            height={layout.height}
+            viewBox={`${-ARC_SPAN} 0 ${ARC_SPAN * 2} ${layout.height}`}
+          >
+            <path
+              d={`M ${-arcHalf} ${arcY} A ${arcR} ${arcR} 0 0 1 ${arcHalf} ${arcY}`}
+              fill="none"
+              className="stroke-air-blue"
+              strokeOpacity="0.35"
+              strokeWidth="1"
+            />
+          </svg>
+        </div>
 
         {platforms.map((p, i) => {
           const slot = slotOf(i, active, n);
@@ -286,7 +296,8 @@ export default function PlatformOrbit({ platforms, logos }) {
           const isCenter = slot === 0;
           // A planet wrapping from one end to the other jumps instead of flying across the stage.
           const animate = !reducedMotion && Math.abs(slot - from) <= 2;
-          const logo = isCenter ? logos.white[p.slug] : logos.mark;
+          // Own white logo on every planet; side planets fall back to the 9Expert mark, then to text.
+          const logo = logos.white[p.slug] ?? (isCenter ? null : logos.mark);
           return (
             <div
               key={p.slug}
@@ -324,8 +335,8 @@ export default function PlatformOrbit({ platforms, logos }) {
                 }`}
               >
                 {logo ? (
-                  <span className={`relative block ${isCenter ? "h-[58%] w-[62%]" : "h-[50%] w-[50%]"}`}>
-                    <Image src={logo} alt="" fill sizes={isCenter ? "180px" : "80px"} className="object-contain" />
+                  <span className="relative block h-[55%] w-[55%]">
+                    <Image src={logo} alt="" fill sizes={isCenter ? "160px" : "90px"} className="object-contain" />
                   </span>
                 ) : isCenter ? (
                   <span className="px-4 text-center text-[1.5rem] leading-tight font-bold text-white">{p.short}</span>
