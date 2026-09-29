@@ -55,17 +55,18 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-deep-navy/10 bg-white/90 backdrop-blur-md">
-      <Container className="flex h-[80px] items-center justify-between">
-        <a href="#top" className="flex items-center gap-3" aria-label="9Expert Knowledge Provider หน้าแรก">
+      <Container className="flex h-20 items-center justify-between">
+        <a href="#top" className="flex shrink-0 items-center gap-4" aria-label="9Expert Knowledge Provider หน้าแรก">
           <Image
             src="/images/9expert-signature-logo.png"
             alt="9Expert"
             width={800}
             height={262}
             loading="eager"
-            className="h-8 w-auto"
+            className="h-10 w-auto object-contain md:h-12"
           />
-          <span className="hidden border-l border-deep-navy/15 pl-3 text-[0.6875rem] leading-tight font-medium text-deep-navy/55 sm:block">
+          {/* Hidden on phones, and at lg–xl where the full nav leaves no room for it. */}
+          <span className="hidden border-l-2 border-deep-navy/20 py-0.5 pl-4 text-[0.8125rem] leading-tight font-medium text-deep-navy/70 sm:block lg:hidden xl:block">
             Knowledge
             <br />
             Provider

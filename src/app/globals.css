@@ -16,7 +16,8 @@
     "LINE Seed Sans TH", var(--font-ibm-plex-sans-thai), "IBM Plex Sans Thai",
     system-ui, sans-serif;
 
-  --header-height: 80px;
+  /* Header row is h-20 (5rem, grows with the text-size toggle) plus its 1px bottom border. */
+  --header-height: calc(5rem + 1px);
   --base-size: 100%;
 }
 
