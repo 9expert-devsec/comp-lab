@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Container from "@/components/Container";
-import { CONTRAST_KEY, savePref } from "@/lib/display-prefs";
+import { CONTRAST_KEY, TEXT_SIZES, TEXTSIZE_KEY, savePref } from "@/lib/display-prefs";
 
 export const NAV = [
   { id: "top", label: "หน้าแรก" },
@@ -13,8 +13,6 @@ export const NAV = [
   { id: "about", label: "เกี่ยวกับเรา" },
   { id: "contact", label: "ติดต่อเรา" },
 ];
-
-const TEXT_SIZE_LABEL = { base: "ปกติ", lg: "ใหญ่", xl: "ใหญ่พิเศษ" };
 
 /* Reads an <html> attribute and re-renders when it changes (the attribute is the source of truth). */
 function htmlAttrStore(attr) {
@@ -29,23 +27,20 @@ function htmlAttrStore(attr) {
   };
 }
 const contrastStore = htmlAttrStore("data-contrast");
+const textSizeStore = htmlAttrStore("data-textsize");
 
+// Fixed 44px squares (no text padding) so the header row fits 320px even at the largest text size.
 const toolBtn =
-  "min-h-[44px] min-w-[44px] px-3 rounded-md border font-semibold transition-colors hc-border";
+  "grid h-11 w-11 shrink-0 place-items-center rounded-md border font-semibold transition-colors hc-border";
 const toolIdle =
   "border-deep-navy/15 text-deep-navy hover:border-action-blue hover:text-action-blue";
 
 export default function Header() {
-  const [textSize, setTextSize] = useState("base");
+  const textSize = useSyncExternalStore(textSizeStore.subscribe, textSizeStore.get, textSizeStore.getServer) ?? "base";
+  const level = Math.max(0, TEXT_SIZES.findIndex((t) => t.value === textSize));
   const highContrast = useSyncExternalStore(contrastStore.subscribe, contrastStore.get, contrastStore.getServer) === "high";
   const [open, setOpen] = useState(false);
   const menuBtnRef = useRef(null);
-
-  useEffect(() => {
-    const el = document.documentElement;
-    if (textSize === "base") el.removeAttribute("data-textsize");
-    else el.setAttribute("data-textsize", textSize);
-  }, [textSize]);
 
   useEffect(() => {
     if (!open) return;
@@ -59,8 +54,11 @@ export default function Header() {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const cycleText = () =>
-    setTextSize((s) => (s === "base" ? "lg" : s === "lg" ? "xl" : "base"));
+  // Cycles ปกติ → ใหญ่ → ใหญ่มาก → ปกติ.
+  const cycleText = () => {
+    const next = TEXT_SIZES[(level + 1) % TEXT_SIZES.length].value;
+    savePref(TEXTSIZE_KEY, "data-textsize", next === "base" ? null : next, next);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-deep-navy/10 bg-white/90 backdrop-blur-md">
@@ -99,11 +97,24 @@ export default function Header() {
             type="button"
             onClick={cycleText}
             className={`${toolBtn} ${toolIdle}`}
-            aria-label={`ปรับขนาดตัวอักษร (ปัจจุบัน: ${TEXT_SIZE_LABEL[textSize]})`}
-            title="ปรับขนาดตัวอักษร"
+            aria-label={`ขนาดตัวอักษร: ${TEXT_SIZES[level].label}`}
+            title={`ขนาดตัวอักษร: ${TEXT_SIZES[level].label}`}
           >
-            <span className="text-[0.8125rem]" aria-hidden="true">ก</span>
-            <span className="ml-0.5 align-middle text-[1.0625rem]" aria-hidden="true">ก</span>
+            <span aria-hidden="true" className="flex flex-col items-center gap-0.5 leading-none">
+              <span>
+                <span className="text-[0.75rem]">ก</span>
+                <span className="text-[1rem]">ก</span>
+              </span>
+              {/* Visible level: one filled bar per step. */}
+              <span className="flex gap-0.5">
+                {TEXT_SIZES.map((t, i) => (
+                  <span
+                    key={t.value}
+                    className={`block h-1 w-1.5 rounded-sm ${i <= level ? "hc-dot-on bg-current" : "hc-dot bg-current opacity-25"}`}
+                  />
+                ))}
+              </span>
+            </span>
           </button>
           <button
             type="button"

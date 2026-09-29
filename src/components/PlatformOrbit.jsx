@@ -344,7 +344,8 @@ export default function PlatformOrbit({ platforms, logos }) {
                   <span className="text-[1.75rem] leading-none font-bold text-air-blue">9</span>
                 )}
               </button>
-              {!isCenter && (
+              {/* On phones the neighbours peek in half off-screen, so their labels would be clipped. */}
+              {!isCenter && !mobile && (
                 <span
                   aria-hidden="true"
                   className="absolute top-[calc(100%+0.75rem)] left-1/2 -translate-x-1/2 text-sm font-semibold whitespace-nowrap text-cloud-base"

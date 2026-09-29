@@ -179,6 +179,7 @@ html[data-contrast="high"] .hc-dot-btn {
 }
 html[data-contrast="high"] .hc-dot {
   border: 2px solid #fff !important;
+  opacity: 1 !important;
 }
 html[data-contrast="high"] .hc-dot-on {
   background-color: #ff0 !important;
