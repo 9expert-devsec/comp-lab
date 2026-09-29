@@ -61,7 +61,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-deep-navy/10 bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-deep-navy/10 bg-white">
       <Container className="flex h-20 items-center justify-between">
         <a href="#top" className="flex shrink-0 items-center gap-4" aria-label="9Expert Knowledge Provider หน้าแรก">
           <Image
@@ -73,7 +73,7 @@ export default function Header() {
             className="h-10 w-auto object-contain md:h-12"
           />
           {/* Hidden on phones, and at lg–xl where the full nav leaves no room for it. */}
-          <span className="hidden border-l-2 border-deep-navy/20 py-0.5 pl-4 text-[0.8125rem] leading-tight font-medium text-deep-navy/70 sm:block lg:hidden xl:block">
+          <span className="hidden border-l-2 border-deep-navy/20 py-0.5 pl-4 text-[0.8125rem] leading-tight font-medium text-navy-70 sm:block lg:hidden xl:block">
             Knowledge
             <br />
             Provider
@@ -85,7 +85,7 @@ export default function Header() {
             <a
               key={n.id}
               href={`#${n.id}`}
-              className="rounded-md px-3 py-2 text-[0.9375rem] font-medium text-deep-navy/75 transition-colors hover:bg-action-blue/[0.06] hover:text-action-blue"
+              className="rounded-md px-3 py-2 text-[0.9375rem] font-medium text-navy-75 transition-colors hover:bg-action-tint hover:text-action-blue"
             >
               {n.label}
             </a>
@@ -161,7 +161,7 @@ export default function Header() {
                 key={n.id}
                 href={`#${n.id}`}
                 onClick={() => setOpen(false)}
-                className="block min-h-[44px] border-b border-deep-navy/5 py-3 text-[0.9375rem] font-medium text-deep-navy/80 last:border-0"
+                className="block min-h-[44px] border-b border-deep-navy/5 py-3 text-[0.9375rem] font-medium text-navy-80 last:border-0"
               >
                 {n.label}
               </a>

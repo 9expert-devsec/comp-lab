@@ -12,7 +12,7 @@ export default function About() {
           <h2 id="about-heading" className="mt-3 text-[1.75rem] leading-tight font-bold text-nine-blue lg:text-[2.375rem]">
             พันธมิตรด้านเทคโนโลยีขององค์กรไทยตั้งแต่ปี 2548
           </h2>
-          <p className="mt-5 text-[1.0625rem] leading-relaxed text-deep-navy/80">
+          <p className="mt-5 text-[1.0625rem] leading-relaxed text-navy-80">
             9Expert (บริษัท นายน์เอ็กซ์เพิร์ท จำกัด) เป็นผู้ให้บริการฝึกอบรมและที่ปรึกษาด้านเทคโนโลยีสารสนเทศ
             มุ่งเน้นการสอนแบบใช้งานได้จริง เพื่อให้องค์กรและหน่วยงานภาครัฐนำความรู้ไปปรับใช้กับงานได้ทันที
           </p>
@@ -20,7 +20,7 @@ export default function About() {
 
         <dl className="mt-10 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col justify-center hc-border rounded-2xl bg-deep-navy p-6 text-white sm:p-8 lg:p-10">
-            <dt className="order-2 mt-2 text-lg text-white/85">{PRIMARY_METRIC.label}</dt>
+            <dt className="order-2 mt-2 text-lg text-on-navy-85">{PRIMARY_METRIC.label}</dt>
             <dd className="order-1 text-[3.25rem] leading-none font-bold text-air-blue lg:text-[4.25rem]">
               {PRIMARY_METRIC.value}
             </dd>
@@ -32,7 +32,7 @@ export default function About() {
                 key={m.label}
                 className="flex min-w-0 flex-col justify-center rounded-2xl border border-deep-navy/10 bg-cloud-base p-5 hc-border"
               >
-                <dt className="order-2 mt-1 text-sm text-deep-navy/70">{m.label}</dt>
+                <dt className="order-2 mt-1 text-sm text-navy-70">{m.label}</dt>
                 <dd className="order-1 text-2xl leading-tight font-bold text-action-blue lg:text-[1.75rem]">
                   {m.value}
                 </dd>
@@ -40,7 +40,7 @@ export default function About() {
             ))}
           </div>
         </dl>
-        <p className="mt-4 text-[0.8125rem] text-deep-navy/60">{METRICS_AS_OF}</p>
+        <p className="mt-4 text-[0.8125rem] text-navy-70">{METRICS_AS_OF}</p>
       </Container>
     </section>
   );

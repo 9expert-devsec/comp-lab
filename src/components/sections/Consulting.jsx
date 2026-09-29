@@ -33,7 +33,7 @@ export default function Consulting() {
                   {r.items.map((it) => (
                     <li
                       key={it}
-                      className="inline-flex max-w-full items-center rounded-full border border-deep-navy/15 bg-white px-4 py-2 text-[0.9375rem] font-medium text-deep-navy/85 hc-border"
+                      className="inline-flex max-w-full items-center rounded-full border border-deep-navy/15 bg-white px-4 py-2 text-[0.9375rem] font-medium text-navy-85 hc-border"
                     >
                       {it}
                     </li>

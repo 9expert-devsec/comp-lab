@@ -9,7 +9,7 @@ import { CONTACT_FALLBACK_EMAIL, PHONE_DISPLAY, PHONE_TEL, PRIVACY_POLICY_URL } 
 
 const FIELD =
   "w-full min-h-[44px] rounded-lg border bg-white px-4 text-[0.9375rem] text-deep-navy " +
-  "placeholder:text-deep-navy/50 focus:border-action-blue outline-none transition-colors hc-border";
+  "placeholder:text-navy-70 focus:border-action-blue outline-none transition-colors hc-border";
 const LABEL = "mb-1.5 block text-sm font-semibold text-deep-navy";
 const ERROR_TEXT = "mt-1.5 text-sm font-medium text-[#c01c28]";
 
@@ -112,10 +112,10 @@ function ContactForm({ topic }) {
     return (
       <div
         role="status"
-        className="mt-8 rounded-2xl border-2 border-signal-lime bg-signal-lime/10 p-8 text-center"
+        className="mt-8 rounded-2xl border-2 border-signal-lime bg-lime-tint p-8 text-center"
       >
         <p className="text-xl font-bold text-deep-navy">ขอบคุณสำหรับข้อมูล</p>
-        <p className="mt-2 text-[0.9375rem] text-deep-navy/75">ทีมงานจะติดต่อกลับภายใน 1 วันทำการ</p>
+        <p className="mt-2 text-[0.9375rem] text-navy-75">ทีมงานจะติดต่อกลับภายใน 1 วันทำการ</p>
       </div>
     );
   }
@@ -130,7 +130,7 @@ function ContactForm({ topic }) {
 
   return (
     <form className="mt-8 space-y-5" onSubmit={onSubmit} onChange={onChange} noValidate aria-label="แบบฟอร์มติดต่อ">
-      <p className="text-sm text-deep-navy/70">
+      <p className="text-sm text-navy-70">
         ช่องที่มีเครื่องหมาย <span aria-hidden="true">*</span>
         <span className="sr-only">ดอกจัน</span> จำเป็นต้องกรอก
       </p>
@@ -216,7 +216,7 @@ function ContactForm({ topic }) {
             required
             className="mt-1 h-5 w-5 shrink-0 accent-action-blue"
           />
-          <label htmlFor={fieldId("consent")} className="text-sm leading-relaxed text-deep-navy/80">
+          <label htmlFor={fieldId("consent")} className="text-sm leading-relaxed text-navy-80">
             ข้าพเจ้ายินยอมให้ 9Expert เก็บและใช้ข้อมูลส่วนบุคคลเพื่อติดต่อกลับ ตาม{policy}{" "}
             <span aria-hidden="true">*</span>
           </label>
@@ -229,19 +229,19 @@ function ContactForm({ topic }) {
           id="contact-result"
           role="alert"
           tabIndex={-1}
-          className="rounded-2xl border-2 border-[#c01c28] bg-[#c01c28]/5 p-6"
+          className="rounded-2xl border-2 border-[#c01c28] bg-danger-tint p-6"
         >
           <p className="text-base font-bold text-deep-navy">
             {FAILURE_MESSAGE[result.reason] ?? FAILURE_MESSAGE.default}
           </p>
-          <p className="mt-2 text-[0.9375rem] text-deep-navy/80">
+          <p className="mt-2 text-[0.9375rem] text-navy-80">
             กรุณาติดต่อทีมงานโดยตรงที่โทร{" "}
             <a href={PHONE_TEL} className="font-semibold text-action-blue underline underline-offset-2">
               {PHONE_DISPLAY}
             </a>
           </p>
           {CONTACT_FALLBACK_EMAIL && (
-            <p className="mt-1 text-[0.9375rem] text-deep-navy/80">
+            <p className="mt-1 text-[0.9375rem] text-navy-80">
               หรืออีเมล{" "}
               <a
                 href={`mailto:${CONTACT_FALLBACK_EMAIL}`}

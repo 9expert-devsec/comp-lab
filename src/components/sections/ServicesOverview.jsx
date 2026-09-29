@@ -28,7 +28,7 @@ export default function ServicesOverview() {
               className="flex min-w-0 flex-col items-center rounded-2xl border border-deep-navy/10 bg-cloud-base p-7 text-center transition-colors hc-border hover:border-action-blue/40"
             >
               <h3 className="text-[1.3125rem] font-bold text-deep-navy">{c.title}</h3>
-              <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-deep-navy/75">{c.line}</p>
+              <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-navy-75">{c.line}</p>
               <Button variant="action" href={`#${c.target}`} className="mt-6">
                 ดูรายละเอียด<span className="sr-only"> {c.title}</span>
               </Button>

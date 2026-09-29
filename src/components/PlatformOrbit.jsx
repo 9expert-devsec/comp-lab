@@ -53,7 +53,7 @@ function geometry(slot, layout, k) {
 
 function PlatformCta({ platform }) {
   if (!platform.url) {
-    return <p className="inline-flex min-h-[44px] items-center text-[0.9375rem] font-semibold text-white/75">เร็ว ๆ นี้</p>;
+    return <p className="inline-flex min-h-[44px] items-center text-[0.9375rem] font-semibold text-on-navy-75">เร็ว ๆ นี้</p>;
   }
   return (
     <a
@@ -214,7 +214,7 @@ export default function PlatformOrbit({ platforms, logos }) {
           {platforms.map((p) => (
             <li key={p.slug} className="rounded-2xl border-2 border-air-blue p-6">
               <h3 className="text-xl font-bold">{p.name}</h3>
-              <p className="mt-2 text-[0.9375rem] text-white/80">{p.desc}</p>
+              <p className="mt-2 text-[0.9375rem] text-on-navy-80">{p.desc}</p>
               <div className="mt-4">
                 <PlatformCta platform={p} />
               </div>
@@ -331,7 +331,7 @@ export default function PlatformOrbit({ platforms, logos }) {
                 className={`focus-lime relative grid h-full w-full place-items-center rounded-full border-2 ${
                   isCenter
                     ? "cursor-default border-action-blue bg-action-blue shadow-[0_0_60px_color-mix(in_srgb,var(--action-blue)_55%,transparent)]"
-                    : "cursor-pointer border-air-blue bg-[color-mix(in_srgb,var(--deep-navy)_80%,black)]"
+                    : "cursor-pointer border-air-blue bg-navy-deep"
                 }`}
               >
                 {logo ? (
@@ -364,11 +364,11 @@ export default function PlatformOrbit({ platforms, logos }) {
         aria-labelledby={`platform-tab-${current.slug}`}
         className="mx-auto mt-6 max-w-[34rem] text-center"
       >
-        <p className="text-[0.8125rem] text-white/75">
+        <p className="text-[0.8125rem] text-on-navy-75">
           แพลตฟอร์ม {active + 1} จาก {n}
         </p>
         <h3 className="mt-1 text-2xl font-bold lg:text-[1.75rem]">{current.name}</h3>
-        <p className="mt-2 text-[0.9375rem] leading-relaxed text-white/80">{current.desc}</p>
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-on-navy-80">{current.desc}</p>
         <div className="mt-5">
           <PlatformCta platform={current} />
         </div>

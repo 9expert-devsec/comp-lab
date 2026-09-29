@@ -37,18 +37,18 @@ export default function Footer() {
               height={262}
               className="h-8 w-auto brightness-0 invert"
             />
-            <span className="border-l border-white/20 pl-3 text-[0.6875rem] leading-tight text-white/55">
+            <span className="border-l border-white/20 pl-3 text-[0.6875rem] leading-tight text-on-navy-55">
               Knowledge
               <br />
               Provider
             </span>
           </div>
-          <address className="mt-4 text-sm leading-relaxed text-white/65 not-italic">
+          <address className="mt-4 text-sm leading-relaxed text-on-navy-65 not-italic">
             บริษัท นายน์เอ็กซ์เพิร์ท จำกัด เลขที่ 318 อาคารเอเวอร์กรีน เพลส ชั้น 2 ห้อง 2B ซอยวรฤทธิ์
             ถนนพญาไท แขวงถนนเพชรบุรี เขตราชเทวี กรุงเทพฯ 10400 · โทร{" "}
             <a
               href={PHONE_TEL}
-              className="whitespace-nowrap text-white/85 underline-offset-2 hover:text-air-blue hover:underline"
+              className="whitespace-nowrap text-on-navy-85 underline-offset-2 hover:text-air-blue hover:underline"
             >
               {PHONE_DISPLAY}
             </a>
@@ -57,11 +57,11 @@ export default function Footer() {
 
         {policies.length > 0 && (
           <div>
-            <h2 className="text-sm font-bold tracking-wide text-white/50 uppercase">นโยบาย</h2>
+            <h2 className="text-sm font-bold tracking-wide text-on-navy-50 uppercase">นโยบาย</h2>
             <ul className="mt-3 space-y-2 text-sm">
               {policies.map((p) => (
                 <li key={p.label}>
-                  <a href={p.url} className="text-white/70 transition-colors hover:text-air-blue">
+                  <a href={p.url} className="text-on-navy-70 transition-colors hover:text-air-blue">
                     {p.label}
                   </a>
                 </li>
@@ -72,7 +72,7 @@ export default function Footer() {
 
         {socials.length > 0 && (
           <div>
-            <h2 className="text-sm font-bold tracking-wide text-white/50 uppercase">ติดตามเรา</h2>
+            <h2 className="text-sm font-bold tracking-wide text-on-navy-50 uppercase">ติดตามเรา</h2>
             <ul className="mt-3 flex gap-3">
               {socials.map(([key, url]) => {
                 const icon = SOCIAL_ICONS[key];
@@ -83,7 +83,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener"
                       aria-label={`9Expert บน ${icon.name} (เปิดในแท็บใหม่)`}
-                      className="grid h-11 w-11 place-items-center rounded-lg border border-white/12 bg-white/[0.08] text-white/85 transition-colors hc-border hover:border-action-blue hover:bg-action-blue"
+                      className="grid h-11 w-11 place-items-center rounded-lg border border-white/12 bg-navy-raised-2 text-on-navy-85 transition-colors hc-border hover:border-action-blue hover:bg-action-blue"
                     >
                       {/* aria-label is the whole accessible name, so it carries the new-tab note too. */}
                       <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -98,7 +98,7 @@ export default function Footer() {
         )}
       </Container>
       <div className="border-t border-white/10">
-        <Container className="py-5 text-[0.8125rem] text-white/50">
+        <Container className="py-5 text-[0.8125rem] text-on-navy-50">
           © {thaiYear} บริษัท นายน์เอ็กซ์เพิร์ท จำกัด สงวนลิขสิทธิ์
         </Container>
       </div>

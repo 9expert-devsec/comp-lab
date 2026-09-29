@@ -24,7 +24,7 @@ export default function Contact() {
           >
             พร้อมช่วยวางแผนให้ทีมของคุณ
           </h2>
-          <p className="mt-3 text-[0.9375rem] text-deep-navy/75">
+          <p className="mt-3 text-[0.9375rem] text-navy-75">
             ต้องการอบรม In-House?{" "}
             <a
               href={INHOUSE_QUOTE_URL}
@@ -44,7 +44,7 @@ export default function Contact() {
         <div className="min-w-0 space-y-4">
           <div className="rounded-2xl border border-deep-navy/10 bg-white p-7 hc-border">
             <h3 className="text-lg font-bold text-deep-navy">ที่อยู่ติดต่อ</h3>
-            <address className="mt-3 text-[0.9375rem] leading-relaxed text-deep-navy/80 not-italic">
+            <address className="mt-3 text-[0.9375rem] leading-relaxed text-navy-80 not-italic">
               บริษัท นายน์เอ็กซ์เพิร์ท จำกัด
               <br />
               เลขที่ 318 อาคารเอเวอร์กรีน เพลส ชั้น 2 ห้อง 2B

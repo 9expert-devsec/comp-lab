@@ -27,13 +27,13 @@ function TimelineItem({ year, title, desc, tags, logo }) {
           />
         )}
         <h3 className="text-[1.1875rem] font-bold text-deep-navy lg:text-[1.3125rem]">{title}</h3>
-        {desc && <p className="mt-2 max-w-[40rem] text-[0.9375rem] leading-relaxed text-deep-navy/75">{desc}</p>}
+        {desc && <p className="mt-2 max-w-[40rem] text-[0.9375rem] leading-relaxed text-navy-75">{desc}</p>}
         {tags?.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-2" aria-label="ประเภทงาน">
             {tags.map((tg) => (
               <li
                 key={tg}
-                className="inline-flex items-center rounded-full bg-action-blue/[0.06] px-3 py-1.5 text-[0.8125rem] font-semibold text-action-blue"
+                className="inline-flex items-center rounded-full bg-action-tint-cloud px-3 py-1.5 text-[0.8125rem] font-semibold text-action-blue"
               >
                 {tg}
               </li>
@@ -91,7 +91,7 @@ export default function Portfolio() {
               className={`min-h-[44px] rounded-full px-5 text-sm font-semibold transition-colors hc-border ${
                 active === i
                   ? "bg-action-blue text-white"
-                  : "border border-deep-navy/15 bg-white text-deep-navy/75 hover:border-action-blue hover:text-action-blue"
+                  : "border border-deep-navy/15 bg-white text-navy-75 hover:border-action-blue hover:text-action-blue"
               }`}
             >
               {t.label}

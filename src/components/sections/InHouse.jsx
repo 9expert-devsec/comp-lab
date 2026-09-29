@@ -30,7 +30,7 @@ export default function InHouse() {
         </div>
         <ul className="min-w-0 space-y-4">
           {POINTS.map((p) => (
-            <li key={p} className="flex gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-5 hc-border">
+            <li key={p} className="flex gap-4 rounded-xl border border-white/10 bg-navy-raised p-5 hc-border">
               <svg width="24" height="24" viewBox="0 0 24 24" className="mt-0.5 shrink-0" aria-hidden="true">
                 <circle cx="12" cy="12" r="11" className="fill-air-blue" />
                 <path
@@ -42,7 +42,7 @@ export default function InHouse() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="min-w-0 text-base leading-relaxed text-white/90">{p}</span>
+              <span className="min-w-0 text-base leading-relaxed text-on-navy-90">{p}</span>
             </li>
           ))}
         </ul>

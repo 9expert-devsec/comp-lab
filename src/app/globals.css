@@ -33,6 +33,37 @@
   --font-sans: var(--font-brand);
 }
 
+/*
+ * Solid equivalents of the former alpha colours (computed by compositing over the real parent
+ * background), so automated checkers that ignore alpha still see the true contrast.
+ *   navy-NN     = Deep Navy text at NN% over white   (all ≥ 6.1:1 on white and Cloud Base)
+ *   on-navy-NN  = white text at NN% over Deep Navy   (all ≥ 5.1:1 on Deep Navy)
+ *   *-tint      = light tinted surfaces behind text
+ */
+@theme {
+  --color-navy-70: #565f6a;
+  --color-navy-75: #4a545f;
+  --color-navy-80: #3d4955;
+  --color-navy-85: #313d4a;
+
+  --color-on-navy-50: #868d95;
+  --color-on-navy-55: #92989f;
+  --color-on-navy-65: #aaafb4;
+  --color-on-navy-70: #b6bbbf;
+  --color-on-navy-75: #c3c6ca;
+  --color-on-navy-80: #cfd1d4;
+  --color-on-navy-85: #dbdddf;
+  --color-on-navy-90: #e7e8ea;
+
+  --color-action-tint: #f0f5ff; /* Action Blue 6% over white */
+  --color-action-tint-cloud: #e9f1fd; /* Action Blue 6% over Cloud Base */
+  --color-danger-tint: #f5eff2; /* #C01C28 5% over Cloud Base */
+  --color-lime-tint: #f4faea; /* Signal Lime 10% over Cloud Base */
+  --color-navy-raised: #172433; /* white 4% over Deep Navy */
+  --color-navy-raised-2: #202d3b; /* white 8% over Deep Navy */
+  --color-navy-deep: #0a1622; /* Deep Navy 80% over black */
+}
+
 html {
   font-size: var(--base-size);
   scroll-behavior: smooth;

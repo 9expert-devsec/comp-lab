@@ -54,7 +54,7 @@ export default function ClientSlider({ logos }) {
       onBlur={onBlur}
     >
       <div className="mb-4 flex items-center justify-between gap-4">
-        <p className="text-[0.8125rem] font-medium tracking-wide text-deep-navy/60 uppercase">
+        <p className="text-[0.8125rem] font-medium tracking-wide text-navy-70 uppercase">
           องค์กรชั้นนำที่เลือกใช้บริการ
         </p>
         <button

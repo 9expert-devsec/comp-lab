@@ -32,7 +32,7 @@ export default function Accessibility() {
           {ITEMS.map((it) => (
             <li key={it.t} className="min-w-0 rounded-2xl border border-deep-navy/10 bg-cloud-base p-7 hc-border">
               <h3 className="text-[1.1875rem] font-bold text-deep-navy">{it.t}</h3>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-deep-navy/75">{it.d}</p>
+              <p className="mt-2 text-[0.9375rem] leading-relaxed text-navy-75">{it.d}</p>
             </li>
           ))}
         </ul>
@@ -48,7 +48,7 @@ export default function Accessibility() {
         </div>
 
         <div className="mt-12">
-          <h3 className="mb-4 text-[0.8125rem] font-medium tracking-wide text-deep-navy/60 uppercase">
+          <h3 className="mb-4 text-[0.8125rem] font-medium tracking-wide text-navy-70 uppercase">
             หน่วยงานภาครัฐที่ให้ความไว้วางใจ
           </h3>
           {/* Logos from public/logos/government; placeholder tiles while that folder is empty. */}
@@ -58,7 +58,7 @@ export default function Accessibility() {
               : Array.from({ length: 6 }, (_, i) => (
                   <li
                     key={i}
-                    className="flex min-h-14 items-center justify-center rounded-lg border border-deep-navy/10 bg-white px-4 py-2 text-center text-sm font-semibold text-deep-navy/60 hc-border"
+                    className="flex min-h-14 items-center justify-center rounded-lg border border-deep-navy/10 bg-white px-4 py-2 text-center text-sm font-semibold text-navy-70 hc-border"
                   >
                     [โลโก้หน่วยงานรัฐ]
                   </li>

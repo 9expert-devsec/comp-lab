@@ -17,7 +17,7 @@ export default function Hero() {
           >
             พาองค์กรไทยใช้เทคโนโลยีได้จริง
           </h1>
-          <p className="mt-5 max-w-[35rem] text-[1.0625rem] leading-relaxed text-deep-navy/80 lg:text-[1.1875rem]">
+          <p className="mt-5 max-w-[35rem] text-[1.0625rem] leading-relaxed text-navy-80 lg:text-[1.1875rem]">
             ฝึกอบรม ที่ปรึกษาด้านข้อมูล และบริการ Web Accessibility สำหรับองค์กรและหน่วยงานภาครัฐ ตั้งแต่ปี 2548
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
@@ -28,7 +28,7 @@ export default function Hero() {
               บริการสำหรับองค์กร
             </Button>
           </div>
-          <p className="mt-5 text-sm text-deep-navy/70">
+          <p className="mt-5 text-sm text-navy-70">
             มองหาหลักสูตร?{" "}
             <a
               href="https://www.9experttraining.com"
@@ -53,7 +53,7 @@ export default function Hero() {
           </div>
           <div className="hc-border absolute -bottom-4 -left-3 rounded-xl bg-deep-navy px-5 py-4 text-white shadow-lg lg:-left-5">
             <div className="text-[1.625rem] font-bold text-air-blue">5,000+</div>
-            <div className="text-xs text-white/75">องค์กรที่ไว้วางใจ</div>
+            <div className="text-xs text-on-navy-75">องค์กรที่ไว้วางใจ</div>
           </div>
         </div>
       </Container>
