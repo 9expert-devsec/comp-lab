@@ -140,14 +140,14 @@ function ContactForm({ topic }) {
           <label htmlFor={fieldId("name")} className={LABEL}>
             ชื่อ-นามสกุล <span aria-hidden="true">*</span>
           </label>
-          <input {...a11yProps("name", errors)} required autoComplete="name" className={fieldClass("name", errors)} placeholder="สมชาย ใจดี" />
+          <input {...a11yProps("name", errors)} type="text" required autoComplete="name" className={fieldClass("name", errors)} placeholder="สมชาย ใจดี" />
           <FieldError name="name" errors={errors} />
         </div>
         <div className="min-w-0">
           <label htmlFor={fieldId("org")} className={LABEL}>
             หน่วยงาน / องค์กร <span aria-hidden="true">*</span>
           </label>
-          <input {...a11yProps("org", errors)} required autoComplete="organization" className={fieldClass("org", errors)} placeholder="ชื่อองค์กร" />
+          <input {...a11yProps("org", errors)} type="text" required autoComplete="organization" className={fieldClass("org", errors)} placeholder="ชื่อองค์กร" />
           <FieldError name="org" errors={errors} />
         </div>
         <div className="min-w-0">
