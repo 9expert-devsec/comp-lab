@@ -84,6 +84,28 @@ html[data-contrast="high"] *:focus-visible {
   outline-color: var(--signal-lime);
 }
 
+/* Lime ring for round controls on the dark platforms carousel. Unlayered on purpose: it must beat
+   the rule above, which Tailwind utilities (layered) cannot. Keeps the control's round shape. */
+.focus-lime:focus-visible {
+  outline: 3px solid var(--signal-lime);
+  outline-offset: 4px;
+  border-radius: 9999px;
+}
+
+/* Platforms carousel: the active dot fills over one auto-rotation interval (7s). */
+@keyframes platform-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.platform-progress {
+  transform-origin: left;
+  animation: platform-progress 7s linear forwards;
+}
+
 ::selection {
   background: var(--signal-lime);
   color: var(--deep-navy);
