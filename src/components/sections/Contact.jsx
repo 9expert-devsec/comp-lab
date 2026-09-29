@@ -3,7 +3,14 @@ import Button from "@/components/Button";
 import { ContactForm, ContactFormFromUrl } from "@/components/ContactForm";
 import Container from "@/components/Container";
 import Eyebrow from "@/components/Eyebrow";
-import { COMPANY_PROFILE_URL, GOOGLE_MAPS_URL, INHOUSE_QUOTE_URL, PHONE_DISPLAY, PHONE_TEL } from "@/data/site";
+import {
+  COMPANY_PROFILE_URL,
+  GOOGLE_MAPS_EMBED_SRC,
+  GOOGLE_MAPS_URL,
+  INHOUSE_QUOTE_URL,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+} from "@/data/site";
 
 export default function Contact() {
   return (
@@ -59,15 +66,21 @@ export default function Contact() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-deep-navy/10 bg-white hc-border">
-            <div className="grid h-[13.75rem] place-items-center bg-deep-navy/5 text-[0.9375rem] font-semibold text-deep-navy/60">
-              [ภาพแผนที่สำนักงาน]
-            </div>
+            {/* The card's overflow-hidden + rounded-2xl gives the map its rounded top corners. */}
+            <iframe
+              src={GOOGLE_MAPS_EMBED_SRC}
+              title="แผนที่ที่ตั้ง บริษัท นายน์เอ็กซ์เพิร์ท จำกัด"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="block h-[300px] w-full border-0 bg-deep-navy/5 md:h-[360px]"
+            />
             <div className="p-4">
               <Button
                 variant="outlineDark"
                 href={GOOGLE_MAPS_URL}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener"
                 className="w-full"
               >
                 เปิดใน Google Maps
