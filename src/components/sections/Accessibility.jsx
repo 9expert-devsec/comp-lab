@@ -54,7 +54,7 @@ export default function Accessibility() {
           {/* Logos from public/logos/government; placeholder tiles while that folder is empty. */}
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {govLogos.length > 0
-              ? govLogos.map((logo) => <LogoTile key={logo.src} {...logo} />)
+              ? govLogos.map((logo) => <LogoTile key={logo.src} {...logo} size="lg" />)
               : Array.from({ length: 6 }, (_, i) => (
                   <li
                     key={i}
