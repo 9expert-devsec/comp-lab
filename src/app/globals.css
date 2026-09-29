@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
+/* The design export under prompts/ is reference-only; keep its classes out of the build. */
+@source not "../../prompts";
+
+/* LINE Seed Sans TH is the brand face; IBM Plex Sans Thai is the robust web fallback. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --nine-blue: #2486ff;
+  --action-blue: #005cff;
+  --air-blue: #48b0ff;
+  --deep-navy: #0d1b2a;
+  --cloud-base: #f8fafd;
+  --signal-lime: #d4f73f;
+
+  --font-brand:
+    "LINE Seed Sans TH", var(--font-ibm-plex-sans-thai), "IBM Plex Sans Thai",
+    system-ui, sans-serif;
+
+  --header-height: 80px;
+  --base-size: 100%;
 }
 
+/* `inline` so the high-contrast overrides below flow through to the utilities. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-nine-blue: var(--nine-blue);
+  --color-action-blue: var(--action-blue);
+  --color-air-blue: var(--air-blue);
+  --color-deep-navy: var(--deep-navy);
+  --color-cloud-base: var(--cloud-base);
+  --color-signal-lime: var(--signal-lime);
+
+  --font-sans: var(--font-brand);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  font-size: var(--base-size);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-brand);
+  color: var(--deep-navy);
+  background: var(--cloud-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Keep anchored headings clear of the sticky header. */
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Text-size toggle steps */
+html[data-textsize="lg"] {
+  --base-size: 112.5%;
+}
+html[data-textsize="xl"] {
+  --base-size: 125%;
+}
+
+/* High-contrast mode: strengthen borders + text weight against light/dark grounds */
+html[data-contrast="high"] {
+  --nine-blue: #0a5fd0;
+  --action-blue: #0043c2;
+  --air-blue: #6ec2ff;
+}
+html[data-contrast="high"] .hc-border {
+  border-color: currentColor !important;
+}
+
+/* Visible, consistent focus states (WCAG 2.2) */
+*:focus-visible {
+  outline: 3px solid var(--action-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+html[data-contrast="high"] *:focus-visible {
+  outline-color: var(--signal-lime);
+}
+
+::selection {
+  background: var(--signal-lime);
+  color: var(--deep-navy);
 }
