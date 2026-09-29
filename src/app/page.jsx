@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import About from "@/components/sections/About";
 import Accessibility from "@/components/sections/Accessibility";
 import Consulting from "@/components/sections/Consulting";
+import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
 import InHouse from "@/components/sections/InHouse";
 import Portfolio from "@/components/sections/Portfolio";
@@ -34,7 +35,7 @@ export default function Home() {
       <Portfolio />
       <SectionShell id="platforms" title="แพลตฟอร์ม" bg="bg-deep-navy" dark />
       <About />
-      <SectionShell id="contact" title="ติดต่อเรา" bg="bg-cloud-base" />
+      <Contact />
     </>
   );
 }

@@ -19,13 +19,14 @@ export default function About() {
         </div>
 
         <dl className="mt-10 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-          <div className="flex flex-col justify-center rounded-2xl bg-deep-navy p-8 text-white lg:p-10">
+          <div className="flex flex-col justify-center rounded-2xl bg-deep-navy p-6 text-white sm:p-8 lg:p-10">
             <dt className="order-2 mt-2 text-lg text-white/85">{PRIMARY_METRIC.label}</dt>
             <dd className="order-1 text-[3.25rem] leading-none font-bold text-air-blue lg:text-[4.25rem]">
               {PRIMARY_METRIC.value}
             </dd>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          {/* rem minimum: drops to one column when the text-size toggle makes the figures wider. */}
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,10rem),1fr))] gap-4">
             {METRICS.map((m) => (
               <div
                 key={m.label}

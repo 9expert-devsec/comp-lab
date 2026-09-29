@@ -35,7 +35,7 @@ export default function Accessibility() {
         </ul>
 
         <div className="mt-9 flex flex-wrap gap-3">
-          <Button variant="action" href="#contact">
+          <Button variant="action" href="/?topic=accessibility#contact">
             ปรึกษาเรื่อง Web Accessibility
           </Button>
           <Button variant="outlineDark" href="https://www.thaiwebaccessibility.com/">

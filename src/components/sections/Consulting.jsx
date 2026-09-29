@@ -43,7 +43,7 @@ export default function Consulting() {
             </div>
           ))}
         </dl>
-        <Button variant="action" href="#contact" className="mt-9">
+        <Button variant="action" href="/?topic=consulting#contact" className="mt-9">
           ปรึกษาเรื่อง Data · AI · Automation
         </Button>
       </Container>

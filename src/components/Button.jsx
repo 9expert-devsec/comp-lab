@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const BASE =
   "inline-flex max-w-full items-center justify-center gap-2 min-h-[44px] px-6 py-2 rounded-lg text-center font-semibold " +
   "transition-[transform,background-color,color,border-color] duration-200 ease-out " +
@@ -11,9 +13,16 @@ const VARIANTS = {
   outlineLight: "border-2 border-white/35 text-white hover:border-air-blue hover:text-air-blue hc-border",
 };
 
-/* Renders an <a> when given href, otherwise a <button>. */
+/* Renders a <Link> for in-app paths ("/…"), an <a> for other hrefs, otherwise a <button>. */
 export default function Button({ variant = "action", href, className = "", children, ...rest }) {
   const cls = `${BASE} ${VARIANTS[variant]} ${className}`;
+  if (href?.startsWith("/")) {
+    return (
+      <Link href={href} className={cls} {...rest}>
+        {children}
+      </Link>
+    );
+  }
   if (href) {
     return (
       <a href={href} className={cls} {...rest}>

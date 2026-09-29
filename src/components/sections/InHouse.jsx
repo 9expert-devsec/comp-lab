@@ -1,6 +1,7 @@
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import Eyebrow from "@/components/Eyebrow";
+import { INHOUSE_QUOTE_URL } from "@/data/site";
 
 const POINTS = [
   "หลักสูตรมาตรฐานหรือ Customize ให้ตรงกับงานของทีม (มีค่าบริการเพิ่มเติม)",
@@ -20,7 +21,7 @@ export default function InHouse() {
           </h2>
           <Button
             variant="lime"
-            href="https://www.9experttraining.com/registration/in-house/step-1"
+            href={INHOUSE_QUOTE_URL}
             className="mt-8"
           >
             ขอใบเสนอราคา In-House
