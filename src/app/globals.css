@@ -184,9 +184,14 @@ html[data-contrast="high"] textarea,
 html[data-contrast="high"] .hc-border {
   border: 2px solid #fff !important;
 }
+/* Placeholders stay 21:1 but are italic and normal-weight, so an empty field can't be mistaken for
+   a filled one. Thai faces have no true italic; font-synthesis gives an oblique that still reads. */
 html[data-contrast="high"] ::placeholder {
   color: #fff;
   opacity: 1;
+  font-style: italic;
+  font-weight: 400;
+  font-synthesis: style;
 }
 
 /* Button-shaped links and buttons (lime and blue alike): black, yellow border, yellow text. */
